@@ -1,10 +1,11 @@
 'use strict';
 
 function average_to_letter(collection) {
+  var _ = require('../../array/lodash');
   var unmber = 0;
-  for (var i = 0; i < collection.length; i++) {
-    unmber = unmber + collection[i];
-  }
+  _(collection).each(function(num, i){
+    unmber = unmber + num;
+  });
   if (unmber%(collection.length)===0) {
     unmber = unmber/(collection.length);
   }else {

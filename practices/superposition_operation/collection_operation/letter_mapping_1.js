@@ -1,13 +1,14 @@
 'use strict';
 
 function even_to_letter(collection) {
-
+  var _ = require('../../array/lodash');
   var array = [];
-  for (var i = 0; i < collection.length; i++) {
-    if (collection[i]%2===0) {
-      array.push(String.fromCharCode(collection[i]+96));
+  _(collection).each(function(num,i){
+    if (num%2===0) {
+      array.push(String.fromCharCode(num+96));
     }
-  }
+  });
+
   return array;
 }
 
