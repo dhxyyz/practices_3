@@ -2,8 +2,8 @@
 var _= require('../array/lodash.js');
 function choose_no_repeat_number(collection) {
   var array = [];
-   _.each(collection,function(item,i){
-     if (!_.exist(array,item)) {
+   _(collection).each(function(item,i){
+     if (!_(array).exist(item).value()) {
        array.push(item);
      }
   });

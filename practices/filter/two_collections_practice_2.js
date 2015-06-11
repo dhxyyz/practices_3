@@ -2,12 +2,12 @@
 var _= require('../array/lodash.js');
 function choose_no_common_elements(collection_a, collection_b) {
   var array = [];
-  _.each(collection_a,function(item,i){
-    if (!_.exist(collection_b,item)) {
+  _(collection_a).each(function(item,i){
+    if (!_(collection_b).exist(item).value()) {
       array.push(item);
     }
   });
-  
+
   return array;
 }
 
