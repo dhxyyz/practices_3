@@ -6,31 +6,10 @@ function compute_chain_median(collection) {
   for (var i = 0; i < array.length; i++) {
     array[i] = parseInt(array[i]);
   }
-   _.rank(array);
-   return _.median(array);
-  /*
-  var number;
-  for (i = 0; i < array.length; i++) {
-    for (var j = i+1; j < array.length; j++) {
-      if (array[i]>array[j]) {
-        number=array[i];
-        array[i]=array[j];
-        array[j]=number;
-      }
-    }
-  }
-
-  var median;
-  var k;
-  if ((array.length)%2===0) {
-    k = (array.length)/2;
-    median=(array[k]+array[k-1])/2;
-  }else {
-    k = (array.length-1)/2;
-    median=array[k];
-  }
-  return median;
-  */
+   array = _(array).rank(function(a,b){
+     return a>b;
+   }).value();
+   return _(array).median().value();
 }
 
 module.exports = compute_chain_median;
