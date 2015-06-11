@@ -2,28 +2,18 @@
 var _ = require('../../array/lodash');
 var even_asc_odd_desc = function(collection){
   var array = [];
-  _.rank(collection,1);
-  /*
-  var array = [];
-  var number;
-  for (var i = 0; i < collection.length; i++) {
-    for (var j = i+1; j < collection.length; j++) {
-      if (collection[i]>collection[j]) {
-        number=collection[i];
-        collection[i]=collection[j];
-        collection[j]=number;
-      }
+  var array_a = _(collection).rank(function(a,b){
+    return a>b;
+  }).value();
+
+  for (var i = 0; i < array_a.length; i++) {
+    if (array_a[i]%2===0) {
+      array.push(array_a[i]);
     }
   }
-  */
-  for (var i = 0; i < collection.length; i++) {
-    if (collection[i]%2===0) {
-      array.push(collection[i]);
-    }
-  }
-  for ( i = collection.length-1; i >= 0; i--) {
-    if (collection[i]%2!==0) {
-      array.push(collection[i]);
+  for ( i = array_a.length-1; i >= 0; i--) {
+    if (array_a[i]%2!==0) {
+      array.push(array_a[i]);
     }
   }
   return array;
