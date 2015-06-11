@@ -6,14 +6,12 @@ function double_to_one(collection) {
   _(collection).each(function(num,i){
     if (num.length===undefined) {
       array.push(num);
-
     }
     _(num).each(function(num,i){
       if (num.length===undefined) {
         array.push(num);
       }
     });
-
   });
 
 

@@ -2,22 +2,28 @@
 
 function double_to_one(collection) {
 
+  var _= require('../array/lodash.js');
   var array=[];
-  for (var i = 0; i < collection.length; i++) {
-    if (collection[i].length===undefined) {
-      array.push(collection[i]);
-
+  _(collection).each(function(num,i){
+    if (num.length===undefined) {
+      array.push(num);
     }
-    for (var j = 0; j < (collection[i]).length; j++) {
-      if (collection[i][j].length===undefined) {
-        array.push(collection[i][j]);
+    _(num).each(function(num,i){
+      if (num.length===undefined) {
+        array.push(num);
       }
-    }
-  }
+    });
+  });
 
+  return duplicate(array);
+}
+
+module.exports = double_to_one;
+
+function duplicate(array){
   var decide = false;
   var collection_a = [];
-  for ( i = 0; i < array.length; i++) {
+  for (var i = 0; i < array.length; i++) {
     for (var x = 0; x < collection_a.length; x++) {
       if (array[i]===collection_a[x]) {
         decide = true;
@@ -30,5 +36,3 @@ function double_to_one(collection) {
   }
   return collection_a;
 }
-
-module.exports = double_to_one;
