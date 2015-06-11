@@ -2,12 +2,12 @@
 var _= require('../array/lodash.js');
 function get_intersection(collection_a, collection_b) {
   var collection = [];
-  _.each(collection_b,function(item,i){
-    if (_.exist(collection_a,item)) {
+  _(collection_b).each(function(item,i){
+    if (_(collection_a).exist(item).value()) {
       collection[collection.length] = item;
     }
   });
-
+  
   return collection;
 }
 
